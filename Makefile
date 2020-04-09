@@ -11,7 +11,7 @@ DEPS = include/nm.h
 $(OBJDIR)/%.o: $(SRCDIR)/%.c 
 	$(CC) -c $(SRC) -o $@ $(FLAGS)
 
-nm_make: $(OBJ)
+nm_make: $(OBJ) libft
 	$(CC) $(FLAGS) $(OBJ) -o nm $(LIBS)
 
 libft:
@@ -24,5 +24,4 @@ clean:
 fclean:
 	cd include/libft/ && make fclean
 
-
-
+re: fclean nm_make
