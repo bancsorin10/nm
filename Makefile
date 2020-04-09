@@ -1,7 +1,8 @@
 SRCDIR = src
 OBJDIR = obj
-SRC = $(SRCDIR)/nm.c
-_OBJ = nm.o
+_SRC = nm.c open_elf.c
+SRC = $(patsubst %,$(SRCDIR)/%,$(_SRC))
+_OBJ = nm.o open_elf.o
 OBJ = $(patsubst %,$(OBJDIR)/%,$(_OBJ))
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -9,9 +10,9 @@ LIBS = include/libft/libft.a
 DEPS = include/nm.h
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c 
-	$(CC) -c $(SRC) -o $@ $(FLAGS)
+	$(CC) -c $(FLAGS) $< -o $@
 
-nm_make: $(OBJ) libft
+nm_make: $(OBJ) # libft but commented so i dont have to build it everytime
 	$(CC) $(FLAGS) $(OBJ) -o nm $(LIBS)
 
 libft:
