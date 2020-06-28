@@ -7,7 +7,7 @@ int main(int ac, char **av) {
     }
     // probably check for extra options here
 
-    open_elf(av[ac - 1]); // suppose file name is always in last argument
+    open_file(av[ac - 1]); // suppose file name is always in last argument
 
     return (0);
 }

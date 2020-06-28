@@ -9,7 +9,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+# include <stdint.h>
+# include <elf.h>
 
-void open_elf(char *file_name);
+void open_file(char *file_name);
+void parse_elf_64(void *file);
 
 #endif

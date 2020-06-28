@@ -1,11 +1,11 @@
 SRCDIR = src
 OBJDIR = obj
-_SRC = nm.c open_elf.c
+_SRC = nm.c open_file.c parse_elf_64.c
 SRC = $(patsubst %,$(SRCDIR)/%,$(_SRC))
-_OBJ = nm.o open_elf.o
+_OBJ = nm.o open_file.o parse_elf_64.o
 OBJ = $(patsubst %,$(OBJDIR)/%,$(_OBJ))
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
+CC = clang
+FLAGS = -g -Wall -Wextra -Werror
 LIBS = include/libft/libft.a
 DEPS = include/nm.h
 
