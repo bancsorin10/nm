@@ -8,14 +8,12 @@ void print_syms_elf64(Elf64_Sym *symtab, int symbols, char *strtab)
 {
     int i;
     char *name;
-    /* TODO: something to print the value of */
-    /* the symbol in 64 bit aka 16 hexa numbers */
 
     for (i = 0; i < symbols; i++)
     {
         name = strtab + symtab[i].st_name;
 
-        /* some symbols don't have a name :( */
+        /* some symbols don't have a name so just skip them */
         if (ft_strlen(name))
         {
             print_value(symtab[i].st_value);

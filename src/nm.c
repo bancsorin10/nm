@@ -5,9 +5,9 @@ int main(int ac, char **av) {
         ft_putendl("usage: nm {elf file}");
         return (0);
     }
-    // probably check for extra options here
 
-    open_file(av[ac - 1]); // suppose file name is always in last argument
+    /* file name as argument */
+    open_file(av[ac - 1]);
 
     return (0);
 }

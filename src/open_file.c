@@ -4,7 +4,10 @@ static void check_file_type(void *file);
 
 void open_file(char *s)
 {
+    struct stat buffer;
+    int         status;
     int fd;
+    void *addr = NULL;
 
     if ((fd  = open(s, O_RDONLY)) < 1)
     {
@@ -12,27 +15,20 @@ void open_file(char *s)
         return ;
     }
 
-    // check file stats first :)
-    struct stat buffer;
-    int         status;
+    /* check file stats */
     status = fstat(fd, &buffer);
     if (status == -1)
     {
-        ft_putendl("fstat failed dude");
+        ft_putendl("fstat failed");
         return ;
     }
 
-    void *addr = NULL;
-    /* PROT_NONE or PROT_READ */
-    /* flags like MAP_SHARED check further info */
-    /* buffer st size for file size and 0 for the offset */
-    /* MAP_ANON flag ? */
     addr = mmap(NULL, buffer.st_size, PROT_READ|PROT_EXEC, MAP_PRIVATE, fd, 0);
     close(fd);
 
     if (addr == MAP_FAILED)
     {
-        ft_putendl("dude map failed what are ya doing?");
+        ft_putendl("couldn't map region");
         return ;
     }
 
