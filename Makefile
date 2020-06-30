@@ -1,8 +1,8 @@
 SRCDIR = src
 OBJDIR = obj
-_SRC = nm.c open_file.c parse_elf_64.c
+_SRC = nm.c open_file.c parse_elf_64.c print_elf64.c
 SRC = $(patsubst %,$(SRCDIR)/%,$(_SRC))
-_OBJ = nm.o open_file.o parse_elf_64.o
+_OBJ = nm.o open_file.o parse_elf_64.o print_elf64.o
 OBJ = $(patsubst %,$(OBJDIR)/%,$(_OBJ))
 CC = clang
 FLAGS = -g -Wall -Wextra -Werror
